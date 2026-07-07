@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yeshna — Marketing & Product</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --lavender: #C9C3E8;
+    --lavender-light: #E8E5F5;
+    --mint: #B8E4D8;
+    --mint-light: #DDF3EC;
+    --blush: #F5C6CB;
+    --blush-light: #FBEBED;
+    --cream: #FAF8F4;
+    --charcoal: #1E1E2E;
+    --charcoal-mid: #3A3A52;
+    --text-muted: #7B7A96;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* ── DOT GRID TEXTURE ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(30,30,46,0.07) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    background: rgba(250,248,244,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,195,232,0.3);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    color: var(--charcoal);
+  }
+
+  .nav-logo span {
+    display: inline-block;
+    width: 8px; height: 8px;
+    background: var(--lavender);
+    border-radius: 50%;
+    margin-left: 6px;
+    vertical-align: middle;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.4); opacity: 0.7; }
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--charcoal-mid);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--charcoal); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 48px 80px;
+    z-index: 1;
+  }
+
+  .hero-inner {
+    max-width: 900px;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--lavender-light);
+    border: 1px solid var(--lavender);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--charcoal-mid);
+    margin-bottom: 32px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--charcoal);
+    border-radius: 50%;
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--charcoal);
+    margin-bottom: 12px;
+  }
+
+  .hero-role-line {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    line-height: 1.1;
+    color: var(--charcoal-mid);
+    margin-bottom: 28px;
+    min-height: 1.3em;
+  }
+
+  #typed-role {
+    color: var(--charcoal);
+    background: linear-gradient(135deg, var(--lavender) 0%, var(--mint) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 3px;
+    height: 0.9em;
+    background: var(--charcoal);
+    margin-left: 3px;
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .hero-desc {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    max-width: 540px;
+    margin-bottom: 44px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--charcoal);
+    color: var(--cream);
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    letter-spacing: 0.01em;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(30,30,46,0.2);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--charcoal);
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1.5px solid rgba(30,30,46,0.2);
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--charcoal);
+    background: rgba(30,30,46,0.04);
+  }
+
+  /* ── FLOATING TAGS ── */
+  .hero-tags {
+    position: absolute;
+    right: 48px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 2;
+  }
+
+  .tag {
+    background: var(--white);
+    border: 1px solid rgba(201,195,232,0.5);
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--charcoal-mid);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .tag:nth-child(2) { animation-delay: 0.8s; }
+  .tag:nth-child(3) { animation-delay: 1.6s; }
+  .tag:nth-child(4) { animation-delay: 2.4s; }
+  .tag:nth-child(5) { animation-delay: 3.2s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  .tag-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 80px 48px;
+  }
+
+  .section-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, rgba(30,30,46,0.12), transparent);
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .about-text h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 2.2rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .about-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .stat-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid rgba(201,195,232,0.3);
+  }
+
+  .stat-card .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 2.4rem;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-card .stat-label {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--white); }
+
+  .exp-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 32px;
+    padding: 36px 0;
+    border-bottom: 1px solid rgba(30,30,46,0.08);
+    align-items: start;
+  }
+
+  .exp-item:last-child { border-bottom: none; }
+
+  .exp-meta {
+    padding-top: 4px;
+  }
+
+  .exp-year {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+  }
+
+  .exp-company {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--charcoal);
+  }
+
+  .exp-content h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .exp-content p {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .exp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .exp-tag {
+    background: var(--lavender-light);
+    border: 1px solid var(--lavender);
+    border-radius: 100px;
+    padding: 4px 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--charcoal-mid);
+    letter-spacing: 0.02em;
+  }
+
+  .exp-tag.mint {
+    background: var(--mint-light);
+    border-color: var(--mint);
+  }
+
+  .exp-tag.blush {
+    background: var(--blush-light);
+    border-color: var(--blush);
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .skill-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 28px;
+    border: 1px solid rgba(201,195,232,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .skill-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+  }
+
+  .skill-card:nth-child(2) { background: var(--lavender-light); border-color: var(--lavender); }
+  .skill-card:nth-child(4) { background: var(--mint-light); border-color: var(--mint); }
+  .skill-card:nth-child(6) { background: var(--blush-light); border-color: var(--blush); }
+
+  .skill-icon {
+    font-size: 1.6rem;
+    margin-bottom: 14px;
+  }
+
+  .skill-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .skill-card ul {
+    list-style: none;
+  }
+
+  .skill-card li {
+    font-size: 0.83rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .skill-card li::before {
+    content: '';
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--charcoal);
+    opacity: 0.3;
+    flex-shrink: 0;
+  }
+
+  /* ── BILINGUAL BADGE ── */
+  .bilingual-banner {
+    background: linear-gradient(135deg, var(--lavender) 0%, var(--mint) 100%);
+    border-radius: 20px;
+    padding: 40px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    margin-top: 48px;
+  }
+
+  .bilingual-banner h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: var(--charcoal);
+    letter-spacing: -0.02em;
+  }
+
+  .bilingual-banner p {
+    font-size: 0.9rem;
+    color: var(--charcoal-mid);
+    margin-top: 6px;
+  }
+
+  .lang-pills {
+    display: flex;
+    gap: 12px;
+  }
+
+  .lang-pill {
+    background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.9);
+    border-radius: 100px;
+    padding: 10px 20px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--charcoal);
+  }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--charcoal); }
+
+  #contact .section-label { color: rgba(255,255,255,0.3); }
+  #contact .section-label::after { background: linear-gradient(to right, rgba(255,255,255,0.1), transparent); }
+
+  .contact-inner {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .contact-inner h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 3rem;
+    color: var(--cream);
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+  }
+
+  .contact-inner p {
+    color: rgba(250,248,244,0.5);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    letter-spacing: 0.01em;
+  }
+
+  .contact-link.primary {
+    background: var(--lavender);
+    color: var(--charcoal);
+  }
+
+  .contact-link.secondary {
+    background: transparent;
+    color: var(--cream);
+    border: 1.5px solid rgba(255,255,255,0.2);
+  }
+
+  .contact-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--charcoal);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  footer p {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.25);
+  }
+
+  footer span {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.25);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section { padding: 60px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .hero-tags { display: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .exp-item { grid-template-columns: 1fr; gap: 8px; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .bilingual-banner { flex-direction: column; padding: 32px 28px; }
+    .contact-inner h2 { font-size: 2.2rem; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Yeshna<span></span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Toronto · Open to opportunities</div>
+    <h1>Yeshna</h1>
+    <div class="hero-role-line">
+      <span id="typed-role"></span><span class="cursor"></span>
+    </div>
+    <p class="hero-desc">
+      Bilingual marketing specialist turning product complexity into campaigns people actually care about — in two languages, across two audiences.
+    </p>
+    <div class="hero-cta">
+      <a href="#experience" class="btn-primary">View my work ↓</a>
+      <a href="#contact" class="btn-secondary">Get in touch</a>
+    </div>
+  </div>
+
+  <div class="hero-tags">
+    <div class="tag">
+      <div class="tag-dot" style="background: var(--lavender);"></div>
+      Bilingual EN · FR
+    </div>
+    <div class="tag">
+      <div class="tag-dot" style="background: var(--mint);"></div>
+      SaaS Marketing
+    </div>
+    <div class="tag">
+      <div class="tag-dot" style="background: var(--blush);"></div>
+      Product Marketing
+    </div>
+    <div class="tag">
+      <div class="tag-dot" style="background: var(--lavender);"></div>
+      B2B & B2C
+    </div>
+    <div class="tag">
+      <div class="tag-dot" style="background: var(--mint);"></div>
+      GTM Strategy
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">About</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <h2>Where product intuition meets marketing craft.</h2>
+        <p>I've spent four years at the intersection of tech and communication — helping a Canadian SaaS company launch products, grow enterprise accounts, and reach employees in English and French across the country.</p>
+        <p>My background spans three business units: client marketing, corporate campaigns, and product & IT. That breadth is deliberate. Understanding how a product is built makes me better at explaining why it matters.</p>
+        <p>Right now, I'm moving toward Product Marketing Management — bringing the positioning, competitive research, and launch ownership that turns good products into ones people love.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-num" style="color: var(--lavender);">4+</div>
+          <div class="stat-label">Years in SaaS marketing</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num" style="color: var(--charcoal);">3</div>
+          <div class="stat-label">Business units owned</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num" style="color: var(--charcoal);">2</div>
+          <div class="stat-label">Languages, editorial fluency</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-label">Experience</div>
+    <div class="exp-list">
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-year">2021 — Present</div>
+          <div class="exp-company">Venngo / BenefitHub</div>
+        </div>
+        <div class="exp-content">
+          <h3>Bilingual Marketing Specialist</h3>
+          <p>Full-funnel ownership across three business units at a Canadian employee perks SaaS platform. Drove product launches, enterprise client campaigns, and bilingual content strategy for a user base spanning CIBC, LCBO, Bell, FedEx, and Scotiabank.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">GTM Strategy</span>
+            <span class="exp-tag mint">Product Launches</span>
+            <span class="exp-tag blush">Bilingual Content</span>
+            <span class="exp-tag">Sales Enablement</span>
+            <span class="exp-tag mint">Campaign Analytics</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-year">Group Clients</div>
+          <div class="exp-company">Business Unit</div>
+        </div>
+        <div class="exp-content">
+          <h3>Enterprise Client Marketing</h3>
+          <p>Created and managed bilingual marketing programs for enterprise clients across industries. Developed enrollment email flows, one-pagers, and HR-facing enablement materials. Built the WorkPerks Marketing Centre — a self-serve resource hub for HR admins and client teams.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">Email Marketing</span>
+            <span class="exp-tag mint">HR Audiences</span>
+            <span class="exp-tag">Content Strategy</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-year">Corporate</div>
+          <div class="exp-company">Business Unit</div>
+        </div>
+        <div class="exp-content">
+          <h3>Brand & Campaign Management</h3>
+          <p>Led seasonal campaign series in English and Quebec French, with performance analysis across email and in-product placements. Identified structural audience signals in engagement data that informed future segmentation. Produced sports, travel, and retail campaign assets end-to-end.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">Campaign Management</span>
+            <span class="exp-tag blush">French Localization</span>
+            <span class="exp-tag">Performance Analysis</span>
+            <span class="exp-tag mint">Seasonal Campaigns</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-year">Product & IT</div>
+          <div class="exp-company">Business Unit</div>
+        </div>
+        <div class="exp-content">
+          <h3>Product Marketing (Browser Extension GTM)</h3>
+          <p>Owned end-to-end go-to-market for the BenefitHub Chrome and Safari browser extensions — from Chrome Web Store assets and screenshot sequences to FAQ libraries, video storyboards, and promotional copy. Wrote launch copy with preference for concrete, human language over clever abstraction.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">Product Marketing</span>
+            <span class="exp-tag mint">Chrome Web Store</span>
+            <span class="exp-tag">Launch Copy</span>
+            <span class="exp-tag blush">User Education</span>
+            <span class="exp-tag">Visual Assets</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-label">Skills</div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">🎯</div>
+        <h3>Product Marketing</h3>
+        <ul>
+          <li>Go-to-market strategy</li>
+          <li>Positioning & messaging</li>
+          <li>Feature launch planning</li>
+          <li>Sales enablement</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">✍️</div>
+        <h3>Content & Copy</h3>
+        <ul>
+          <li>English & Quebec French</li>
+          <li>UX & product copy</li>
+          <li>Email & campaign writing</li>
+          <li>Technical documentation</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📊</div>
+        <h3>Campaign Analytics</h3>
+        <ul>
+          <li>Email performance analysis</li>
+          <li>In-product engagement data</li>
+          <li>Audience segmentation</li>
+          <li>A/B testing insights</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🧩</div>
+        <h3>Strategy</h3>
+        <ul>
+          <li>Two-sided platform marketing</li>
+          <li>B2B & B2C simultaneously</li>
+          <li>Competitive awareness</li>
+          <li>Cross-team collaboration</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🛠️</div>
+        <h3>Tools & Platforms</h3>
+        <ul>
+          <li>HubSpot, Canva, Figma</li>
+          <li>Web Store CMS</li>
+          <li>Email marketing platforms</li>
+          <li>Google Analytics</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🚀</div>
+        <h3>Launching Things</h3>
+        <ul>
+          <li>App store optimization</li>
+          <li>Feature announcement copy</li>
+          <li>Onboarding flows</li>
+          <li>Seasonal campaign series</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bilingual-banner">
+      <div>
+        <h3>Bilingual at an editorial level.</h3>
+        <p>Quebec French localization that's idiomatic, not literal. Because your users deserve copy that actually sounds right.</p>
+      </div>
+      <div class="lang-pills">
+        <div class="lang-pill">English</div>
+        <div class="lang-pill">Français (QC)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">Contact</div>
+    <div class="contact-inner">
+      <h2>Let's build something worth talking about.</h2>
+      <p>I'm actively exploring Product Marketing Manager roles — in-house or agency, Toronto or remote. If you're working on something interesting, I'd love to hear about it.</p>
+      <div class="contact-links">
+        <a href="mailto:hello@yeshna.com" class="contact-link primary">✉ Email me</a>
+        <a href="https://linkedin.com/in/yeshna" class="contact-link secondary">LinkedIn →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Yeshna. Built with intention.</p>
+  <span>PMM · EN · FR</span>
+</footer>
+
+<script>
+  // ── TYPING ANIMATION ──
+  const roles = [
+    "Product Marketer.",
+    "Bilingual Strategist.",
+    "GTM Builder.",
+    "Campaign Architect.",
+  ];
+
+  let roleIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  const el = document.getElementById('typed-role');
+
+  function type() {
+    const current = roles[roleIndex];
+    if (isDeleting) {
+      el.textContent = current.slice(0, charIndex--);
+      if (charIndex < 0) {
+        isDeleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        setTimeout(type, 400);
+        return;
+      }
+      setTimeout(type, 40);
+    } else {
+      el.textContent = current.slice(0, charIndex++);
+      if (charIndex > current.length) {
+        isDeleting = true;
+        setTimeout(type, 2200);
+        return;
+      }
+      setTimeout(type, 75);
+    }
+  }
+
+  setTimeout(type, 600);
+
+  // ── SMOOTH SCROLL for nav links ──
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
